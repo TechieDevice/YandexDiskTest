@@ -9,8 +9,7 @@ namespace YandexDiskApp
 {
     static class Program
     {
-        private static string ACCESS_TOKEN = "AQAAAAAP1aPWAAe_lES2qOcrBEM9vkU5vPmxuX8";
-
+        private static string ACCESS_TOKEN = "AQAAAABehOdLAAe_lK0bsCViLUXhotDynS3_hUQ";
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>

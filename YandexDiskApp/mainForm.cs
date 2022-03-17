@@ -88,10 +88,10 @@ namespace YandexDiskApp
         {
             progressBar.Minimum = 0;
             progressBar.Maximum = 100;
-            AsyncProgress progress = new AsyncProgress(ProgressAction);
+            var progress = new AsyncProgress(ProgressAction);
 
             var path = Path.Combine(downloads, pathInDisk.Text.Split('/').Last());
-            FileStream fs = new FileStream(
+            var fs = new FileStream(
                 path, FileMode.Create, FileAccess.Write,
                 FileShare.None, bufferSize: 4096);
             DiskSdkClientExtensions.DownloadFileAsync(_sdkClient, pathInDisk.Text, fs, progress, _completeHandler);
@@ -101,9 +101,10 @@ namespace YandexDiskApp
         {
             progressBar.Minimum = 0;
             progressBar.Maximum = 100;
-            AsyncProgress progress = new AsyncProgress(ProgressAction);
+            var progress = new AsyncProgress(ProgressAction);
+
             var path = pathToFile.Text;
-            FileStream fs = new FileStream(
+            var fs = new FileStream(
                 path, FileMode.Open, FileAccess.Read,
                 FileShare.None, bufferSize: 4096);
             var pathToDiskFile = Path.Combine(pathInDisk.Text, fs.Name);
