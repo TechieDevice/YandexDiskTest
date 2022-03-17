@@ -92,10 +92,12 @@ namespace YandexDiskApp
             // 
             // resultBox
             // 
-            this.resultBox.Location = new System.Drawing.Point(39, 227);
+            this.resultBox.Location = new System.Drawing.Point(39, 230);
             this.resultBox.Multiline = true;
             this.resultBox.Name = "resultBox";
-            this.resultBox.Size = new System.Drawing.Size(602, 378);
+            this.resultBox.ReadOnly = true;
+            this.resultBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.resultBox.Size = new System.Drawing.Size(602, 375);
             this.resultBox.TabIndex = 5;
             // 
             // uploadButton
@@ -139,7 +141,7 @@ namespace YandexDiskApp
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(233, 204);
+            this.progressBar.Location = new System.Drawing.Point(228, 207);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(397, 17);
             this.progressBar.TabIndex = 10;

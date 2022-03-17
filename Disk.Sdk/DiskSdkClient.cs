@@ -9,6 +9,8 @@ using System.IO;
 namespace Disk.SDK
 {
     using Disk.SDK.Utils;
+    using System.Text;
+    using System.Web;
 
     /// <summary>
     /// Represents entity to access the Disk SDK.
@@ -326,7 +328,8 @@ namespace Disk.SDK
                 using (var reader = new StreamReader(responseStream))
                 {
                     var responseString = reader.ReadToEnd();
-                    var items = ResponseParser.ParseItems(requestState.ResponseArgument, responseString);
+                    var decodedResponseString = HttpUtility.UrlDecode(responseString);
+                    var items = ResponseParser.ParseItems(requestState.ResponseArgument, decodedResponseString);
                     this.GetListCompleted.SafeInvoke(this, new GenericSdkEventArgs<IEnumerable<DiskItemInfo>>(items));
                 }
             }

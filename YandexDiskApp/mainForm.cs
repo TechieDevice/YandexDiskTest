@@ -54,13 +54,21 @@ namespace YandexDiskApp
             this.BeginInvoke((MethodInvoker)delegate ()
             {
                 resultBox.Text = String.Empty;
-                var result = e.Result.ToList();
-                foreach (DiskItemInfo item in result)
+                if (e.Result.Any() == true)
                 {
-                    resultBox.Text += item.OriginalFullPath + Environment.NewLine;
-                    resultBox.Text += item.CreationDate + Environment.NewLine;
-                    resultBox.Text += Environment.NewLine;
+                    var result = e.Result.ToList();
+                    foreach (DiskItemInfo item in result)
+                    {
+                        resultBox.Text += item.OriginalFullPath + Environment.NewLine;
+                        resultBox.Text += item.CreationDate + Environment.NewLine;
+                        resultBox.Text += Environment.NewLine;
+                    }
                 }
+                else
+                {
+                    resultBox.Text = "folder is empty";
+                }
+                
             });
         }
 
@@ -107,7 +115,7 @@ namespace YandexDiskApp
             var fs = new FileStream(
                 path, FileMode.Open, FileAccess.Read,
                 FileShare.None, bufferSize: 4096);
-            var pathToDiskFile = Path.Combine(pathInDisk.Text, fs.Name);
+            var pathToDiskFile = Path.Combine(pathInDisk.Text, fs.Name.Split('\\').Last());
             DiskSdkClientExtensions.UploadFileAsync(_sdkClient, pathToDiskFile, fs, progress, _completeHandler);
         }
 
