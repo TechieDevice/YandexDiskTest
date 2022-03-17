@@ -352,7 +352,8 @@ namespace Disk.SDK
                 using (var reader = new StreamReader(responseStream))
                 {
                     var responseString = reader.ReadToEnd();
-                    var item = ResponseParser.ParseItem(requestState.ResponseArgument, responseString);
+                    var decodedResponseString = HttpUtility.UrlDecode(responseString);
+                    var item = ResponseParser.ParseItem(requestState.ResponseArgument, decodedResponseString);
                     this.GetItemInfoCompleted.SafeInvoke(this, new GenericSdkEventArgs<DiskItemInfo>(item));
                 }
             }
