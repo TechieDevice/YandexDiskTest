@@ -60,6 +60,8 @@ namespace YandexDiskApp
                     foreach (DiskItemInfo item in result)
                     {
                         resultBox.Text += item.OriginalFullPath + Environment.NewLine;
+                        if (item.PublicUrl != String.Empty) 
+                            resultBox.Text += item.PublicUrl + Environment.NewLine;
                         resultBox.Text += item.CreationDate + Environment.NewLine;
                         resultBox.Text += Environment.NewLine;
                     }
